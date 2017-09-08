@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="dashboardApp">
 <head>
 	 <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -13,40 +13,59 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light main-nav" >
-	<a class="navbar-brand" href="#">Funq - Dashboard</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="#">Go to Reviews <span >(current)</span></a>
-	      </li>
-	    </ul>
-	 </div>
+	<a class="navbar-brand" href="#">Funq - Dashboard</a>	
 </nav>
 
-<div class="container-fluid">
-	<div class="card" style="width: 20rem;">
-		<div class="card-body">
-			<h4 class="card-title">Wie geht es weiter mit dem Flughafen in Berlin?</h4>
-			<h6 class="card-subtitle mb-2 text-muted">Felipe Goyes</h6>
-			<a href="#" class="card-link">Archievieren</a>
-		</div>
-	</div>
-	<div class="card" style="width: 20rem;">
-		<div class="card-body">
-			<h4 class="card-title">Wie geht es weiter mit dem Flughafen in Berlin?</h4>
-			<h6 class="card-subtitle mb-2 text-muted">Felipe Goyes</h6>
-			<a href="#" class="card-link">Card link</a>
-		</div>
-	</div>
+<div class="container-fluid" ng-controller="MainController">
+<ul class="nav nav-tabs" >
+	<li class="nav-item">
+    <a class="nav-link active" id="answered-tab" data-toggle="tab" href="#answered" role="tab" aria-controls="answered" aria-expanded="true">Beantworten</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Unerledige</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent" >
+  <div class="tab-pane fade show active" id="answered" role="tabpanel" aria-labelledby="answered-tab">
+  	<list-answers data="questions"></list-answers>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  	<list-answers data="questionsWithoutAnswer"></list-answers>
+  </div>
 </div>
 
 
+<div class="modal fade" id="answerModal" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Rückmeldung</h5>
+        <button type="button" class="close" data-dismiss="answerModal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Please write your answer here.</p>
+        <input type="text" id="answerId" ng-value="selectedQuestion.answer.text"></input>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="sendAnswer()">Senden</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="answerModal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+	
+</div>
 
 
 <script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery-min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script> 	
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/listAnswers.js"></script>
 </body>
 </html>
