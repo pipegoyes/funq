@@ -1,11 +1,18 @@
 <div class="card" ng-repeat="a in $ctrl.data">
 <div> 
-<span class="pull-right">{{a.count}}</span>
 </div>
 	<div class="card-body">
-		<h4 class="card-title">{{a.text}}</h4>
-		<h6 class="card-subtitle mb-2 text-muted">Felipe</h6>
-		<button class="card-link"  ng-click="$ctrl.showAnswerModel(a)">Anworten</button>
-		<a href="#" class="card-link">Details</a>
+		<div class="card-main">
+			<input type="checkbox" ng-click="$ctrl.markQuestion(a)"></input>
+			<h4 class="card-title">{{a.text}}</h4>
+			<h6 class="card-subtitle mb-2 text-muted">Maximillian Müller</h6>
+			<button class="btn btn-solid"  ng-click="$ctrl.showAnswerModel(a)">Anworten</button>
+			<!--<a href="#" class="card-link">Details</a>-->
+		</div>
+		
+		<div class="card-interest">
+			<span>Interrese</span>
+			<span class="count-answer">{{a.count}}</span>
+		</div>
 	</div>
 </div>

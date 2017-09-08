@@ -3,3 +3,18 @@
 	color:white !important;
 	margin-bottom: 20px;
 }
+
+.card-interest{
+	width: 20%;
+	height: 100px;
+	float: right;
+	text-align: center;
+	font-size: 12px;
+}
+.card-main{
+	width: 80%;
+	float: left;
+}
+.count-answer{
+	font-size: 50px;
+}

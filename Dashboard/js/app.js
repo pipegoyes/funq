@@ -21,10 +21,18 @@
 	      });
 	      return promise;
 		}
-//http://funqapi.azurewebsites.net/api/questions/list
 		this.putAnswerQuestion = function(question){
-			console.log(question);
 			var promise = $http.get('http://funqapi.azurewebsites.net/api/questions/answer?id='+question.id+'&a='+ encodeURI(question.answer.text))
+				.then(function (response, requestAnswer) {
+		        console.log(response);
+		        return response.data;
+		      });
+	      return promise;
+		}
+
+		this.aggredateQuestion = function(parent, child){
+
+			var promise = $http.get('http://funqapi.azurewebsites.net/api/questions/combine?q1='+parent.id+'&q2='+child.id)
 				.then(function (response, requestAnswer) {
 		        console.log(response);
 		        return response.data;
@@ -34,27 +42,44 @@
 
 	}
 
-	MainController.$inject = ['apiService', "$scope"];
-	function MainController(apiService, scope){
+	MainController.$inject = ['apiService', "$scope", "$rootScope"];
+	function MainController(apiService, scope, rootScope){
 		apiService.getQuestions().then(function(response){
 			console.log("response",response)
 			scope.questions = response.filter(function(x){
 				return x.answer.text;
 			});
 			scope.questionsWithoutAnswer = response.filter(function(x){
-				console.log(x.answer.text);
 				return !x.answer.text;
 			})
-			console.log("questionsWithoutAnswer ", scope.questionsWithoutAnswer);
 		});
 		scope.sendAnswer = function(){	
-			console.log("selectedQuestion", scope.selectedQuestion);
 			apiService.putAnswerQuestion(scope.selectedQuestion);
 		}
 
 		scope.aggregateQuestion = function(){
+			var questionParent = rootScope.markedQuestions.pop();
+			var questionChild = rootScope.markedQuestions.pop();
+			console.log("questionParent",questionParent)
+			apiService.aggredateQuestion(questionParent, questionChild).then(function () {
+					apiService.getQuestions()
+						.then(function(response){
+						scope.questions = response.filter(function(x){
+							return x.answer.text;
+						});
+						scope.questionsWithoutAnswer = response.filter(function(x){
+							return !x.answer.text;
+						});
+						rootScope.isMerging = false;
+					});	
+			});
 			
 		}
+
+		rootScope.isMerging = false;
+		rootScope.markedQuestions = [];
+
+		console.log("isMerging", scope.isMerging)
 
 	}
 
