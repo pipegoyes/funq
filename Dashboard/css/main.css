@@ -1,20 +1,66 @@
 .main-nav{
-	background-color: #587eff;
+	background-color: #e4191a;
 	color:white !important;
 	margin-bottom: 20px;
 }
 
 .card-interest{
-	width: 20%;
+	width: 65px;
 	height: 100px;
 	float: right;
 	text-align: center;
 	font-size: 12px;
 }
 .card-main{
-	width: 80%;
+	width: 60%;
 	float: left;
 }
 .count-answer{
 	font-size: 50px;
+}
+
+.article-section{
+	float: left;
+    padding: 20px;
+    text-align: center;
+    border: solid thin gray;
+}
+
+.article-titel{
+    font-style: italic; 
+}
+.question-header{
+	display: inline-block;
+}
+.question-header > *{
+	float: left;	
+}
+
+.mark-question{
+	margin-top: 10px;
+}
+
+.question-text{
+	padding-left: 10px;
+}
+.author-article{
+	font-size: 	12px;
+}
+.main-title{
+	color: white !important;
+	padding-left: 10px;
+}
+
+.article-footer{
+	text-align: left;
+}
+
+.article-footer > a{
+	padding: 0;
+}
+.actions{
+	padding-top: 20px;
+}
+a{
+	color: #e4191a;
 }

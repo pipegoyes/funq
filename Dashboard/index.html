@@ -13,17 +13,21 @@
 </head>
 <body ng-controller="MainController">
 <nav class="navbar navbar-expand-lg navbar-light main-nav" >
-	<a class="navbar-brand" href="#">Funq - Dashboard</a>	
+    <image src="https://www.bildderfrau.de/resources/1504638501/img/logo-head.png" x="0" y="0" height="40" width="40" title="Bild der Frau" alt="Bild der Frau" style="
+    color: #fff;
+"></image>
+
+	<a class="navbar-brand main-title" href="#">FunQ Dashboard</a>	
 	<button class="btn btn-solid" ng-show="isMerging" ng-click="aggregateQuestion()">Merge</button>
 </nav>
 
 <div class="container-fluid" >
 <ul class="nav nav-tabs" >
 	<li class="nav-item">
-    <a class="nav-link active" id="answered-tab" data-toggle="tab" href="#answered" role="tab" aria-controls="answered" aria-expanded="true">Beantworten</a>
+    <a class="nav-link active" id="answered-tab" data-toggle="tab" href="#answered" role="tab" aria-controls="answered" aria-expanded="true">Beanwortet</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Unerledige</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Offen</a>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent" >
@@ -47,7 +51,7 @@
       </div>
       <div class="modal-body">
         <p>Please write your answer here.</p>
-        <input type="text" id="answerId" ng-value="selectedQuestion.answer.text"></input>
+        <input type="text" id="answerId"  ></input>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" ng-click="sendAnswer()">Senden</button>

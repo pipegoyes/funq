@@ -5,6 +5,7 @@
 		controller: function ($rootScope){
 			this.showAnswerModel = function(a){
 				$rootScope.selectedQuestion = a;
+				console.log("rootScope",$rootScope.selectedQuestion);
 				$("#answerModal").modal("show");
 			}
 			this.markQuestion = function(a){

@@ -3,11 +3,32 @@
 </div>
 	<div class="card-body">
 		<div class="card-main">
-			<input type="checkbox" ng-click="$ctrl.markQuestion(a)"></input>
-			<h4 class="card-title">{{a.text}}</h4>
+			<div class="question-header">	
+				<input class="mark-question" type="checkbox" ng-click="$ctrl.markQuestion(a)"></input>
+				<h4  class="card-title question-text">{{a.text}}</h4>
+			</div>
+			<div class="clear-fix"></div>
+			
 			<h6 class="card-subtitle mb-2 text-muted">Maximillian Müller</h6>
-			<button class="btn btn-solid"  ng-click="$ctrl.showAnswerModel(a)">Anworten</button>
-			<!--<a href="#" class="card-link">Details</a>-->
+
+			<div ng-show="{{a.answer.text}}">
+				<span>Antwort:</span>
+				<span>{{a.answer.text}}</span>
+			</div>
+			<div class="actions">
+				<button class="btn btn-solid"  ng-click="$ctrl.showAnswerModel(a)">Anworten</button>	
+			</div>
+			
+		</div>
+		<div class="article-section" ng-if="a.id == 1">
+
+			<img src="/img/Heilerde-Maske.jpg" height="160" width="160">
+			<div class="article-footer">	
+				<a href="#" class="badge badge-light article-titel">Was hilft bei Pickeln? Die sieben besten Hausmittel</a>
+				<div>
+					<span class="author-article">Artikel von Bild der Frau.de</span>	
+				</div>
+			</div>
 		</div>
 		
 		<div class="card-interest">
